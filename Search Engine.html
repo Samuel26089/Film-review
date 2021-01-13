@@ -1,0 +1,57 @@
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<style>
+	h1 {
+		text-align: center;
+		font-size: 100px;
+		color: #707070;
+	}
+	
+	h2 {
+		text-align: center;
+		font-family: Lobster, Monospace;
+		font-size: 50px;
+	}
+	
+	h3 {
+		text-align: center;
+	}
+	
+	a {
+		margin-left: 110px;
+		font-size: 20px;
+		color: #303030;
+		text-decoration: none;
+	}
+</style>
+
+<title>Group 6</title>
+
+<body>
+<h1>Film Review</h1>
+<h2>There are a thousand Hamlets in a thousand people's eyes.</h2>
+<h2>——Shakespeare</h2>
+<h3>Search for films you like.</h3>
+<form action="form_action.asp" method="get" style="text-align:center">
+  <input type="text" name="indexDir" placeholder="Please input keywords."/>
+  <input type="submit" value="Search"/>
+</form>
+<ul id="list"></ul>
+<body/>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript">
+    $.ajax({
+            type: "get",
+            url: "C:\Users\Lenovo\Desktop\web",
+            data:{indexDir:"eco",sex:"男"},
+            success:fill
+        });
+    function fill(data){
+           $("#list").html('');
+           var json = $.parseJSON(data);
+           $.each(json, function SpringApplication(index, item) {
+              var q = json[index].q;
+              $("#list").html($("#list").html() + "<li>"+ q );
+            });
+        };
+</script>
